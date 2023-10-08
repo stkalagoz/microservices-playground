@@ -24,10 +24,7 @@
         <spring.boot.maven.plugin.version>2.5.7</spring.boot.maven.plugin.version>
         <spring.boot.dependencies.version>2.5.7</spring.boot.dependencies.version>
         <lombok.version>1.18.22</lombok.version>
-        <postgresql.version>42.2.24</postgresql.version>
-        <spring-cloud-dependencies.version>2020.0.3</spring-cloud-dependencies.version>
-        <spring-boot-starter-data-jpa.version>2.5.7</spring-boot-starter-data-jpa.version>
-        <spring-boot-starter-web.version>2.5.7</spring-boot-starter-web.version>
+        <spring.cloud.version>2020.0.3</spring.cloud.version>
     </properties>
 
     <dependencyManagement>
@@ -45,14 +42,9 @@
                 <version>${lombok.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-test</artifactId>
-                <version>${spring.boot.maven.plugin.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud-dependencies.version}</version>
+                <version>${spring.cloud.version}</version>
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
@@ -63,6 +55,10 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
     </dependencies>
 
