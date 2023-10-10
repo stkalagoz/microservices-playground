@@ -2,6 +2,8 @@ package com.amigoscode.customer;
 
 import com.amigoscode.clients.fraud.FraudCheckResponse;
 import com.amigoscode.clients.fraud.FraudClient;
+import com.amigoscode.clients.notification.NotificationClient;
+import com.amigoscode.clients.notification.NotificationRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,7 @@ public class CustomerService {
 
     private final CustomerRepository customerRepository;
     private final FraudClient fraudClient;
+    private final NotificationClient notificationClient;
 
     public void registerCustomer(CustomerRegistrationRequest customerRegistrationRequest) throws IllegalAccessException {
         Customer customer = Customer.builder()
@@ -28,6 +31,8 @@ public class CustomerService {
         if (Objects.requireNonNull(fraudster).isFraudster()) {
             throw new IllegalAccessException();
         }
+
+        notificationClient.sendNotification(NotificationRequest.builder().toCustomerId(customer.getId()).message("deneme").build());
 
     }
 }
